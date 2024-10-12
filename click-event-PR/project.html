@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h1>Dev's Music System</h1>
+    </nav>
+
+    <div id="main-container">
+
+        <div class="container-1">
+
+
+        <div id="guitar-box">
+            <img onclick="guitar()" src="./images/guitar.png" alt="guitar" width="70%">
+        </div>
+
+        <div id="tabla-box">
+            <img onclick="tabla()" src="./images/tabla.png" alt="tabla" width="100%">
+        </div>
+
+
+        <div id="drum-box">
+            <img onclick="drum()" src="./images/drum.png" alt="drum" width="100%">
+        </div>
+
+    </div>
+    
+        <audio id="guitar-sound" src="./audios/oldguitar.mp3" ></audio>
+        <audio id="tabla-sound" src="./audios/tabla-sound.wav"></audio>
+        <audio id="drum-sound" src="./audios/drum-sound.wav"></audio>
+
+        <audio id="flute-sound" src="./audios/flute-sound.wav"></audio>
+        <audio id="xylophone-sound" src="./audios/xylophone-sound.wav"></audio>
+        <audio id="piano-sound" src="./audios/piano-sound.mp3"></audio>
+
+     
+    </div>
+    
+
+    <div class="container-2">
+        <div id="flute-box">
+            <img onclick="flute()" src="./images/flute.png" alt="flute" width="70%" height="200px">
+        </div>
+
+        <div id="xylophone-box">
+            <img onclick="xylophone()" src="./images/xylophone.png" alt="xylophone" width="70%">
+        </div>
+
+
+        <div id="piano-box">
+            <img onclick="piano()" src="./images/keyboard.jpg" alt="keyboard" width="90%" height="170px">
+        </div>
+</div>
+</div>
+
+</body>
+
+<script>
+
+    function guitar() {
+        document.getElementById('guitar-sound').play()
+    }
+
+    function tabla() {
+        document.getElementById('tabla-sound').play()
+    }
+
+    function drum() {
+        document.getElementById('drum-sound').play()
+    }
+
+    function flute() {
+        document.getElementById('flute-sound').play()
+    }
+
+    function xylophone() {
+        document.getElementById('xylophone-sound').play()
+    }
+
+    function piano() {
+        document.getElementById('piano-sound').play()
+    }
+
+    
+</script>
+
+
+
+</html>
