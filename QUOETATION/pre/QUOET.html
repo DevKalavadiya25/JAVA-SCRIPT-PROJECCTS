@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Courgette&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Indie+Flower&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+
+        body {
+            background-image: url('https://spiritualarts.org/wp-content/uploads/revslider/Fluid-Dynamics-Effect-Showcase/nebulabg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+            font-family: "Caveat", serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+
+
+
+        h1 {
+            color: #f0b351fa;
+        }
+
+        .container {
+            text-align: center;
+            /* background-color: white; */
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 5px 8px rgba(6, 6, 6, 0.484);
+        }
+
+        strong {
+            font-size: 1.7em;
+            margin: 0;
+            padding: 10px;
+            border-left: 5px solid #a6a3a3;
+        }
+
+        p {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #faf8f8;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #d56cea;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #a854d5;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quote Generator</h1>
+        <strong id="quote">"Click the button to generate a quote!"</strong>
+        <p id="author">- Unknown</p>
+        <button id="new-quote">New Quote</button>
+    </div>
+    <script>
+
+        const quotes = [
+            { text: "“If you want to shine like a sun, first burn like a sun.”", author: " A. P. J. Abdul Kalam" },
+            { text: "“Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.”", author: "Albert Einstein" },
+            { text: "“Live as if you were to die tomorrow. Learn as if you were to live forever.”", author: " Mahatma Gandhi" },
+            { text: "“Self-belief and hard work will always earn you success.”", author: " virat Kohli" },
+            { text: "“Life is too short for long-term grudges.”", author: "Elon Musk" },
+            { text: "“I don't mind people hating me, because it pushes me.”", author: "Cristiano Ronaldo" }
+        ];
+
+        function getQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        function displayQuote() {
+            let quoteElement = document.getElementById('quote');
+            let authorElement = document.getElementById('author');
+            let randomQuote = getQuote();
+
+            quoteElement.textContent = `${randomQuote.text}`;
+            authorElement.textContent = `- ${randomQuote.author}`;
+        }
+
+        document.getElementById('new-quote').addEventListener('click', displayQuote);
+
+        // Display a quote when the page loads
+        displayQuote();
+    </script>
+
+</body>
+
+</html>
