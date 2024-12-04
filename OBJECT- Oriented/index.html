@@ -1,0 +1,36 @@
+<script>
+    class Bank {
+        constructor(bankname, branch, accountnumber, accountname, ifsc, balance) {
+            this.bankname = bankname;
+            this.branch = branch;
+            this.accountnumber = accountnumber;
+            this.accountname = accountname;
+            this.ifsc = ifsc;
+            this.balance = balance;
+        }
+        name() {
+            console.log(`your name is ${this.accountname}`);
+        }
+        details() {
+            console.log(`your Bank name is ${this.bankname} and your branch is ${this.branch} 
+your account number is ${this.accountnumber} and your ifsc code is ${this.ifsc} `)
+        }
+        Balance() {
+            console.log(`your account balance is  ${this.balance}`)
+        }
+        History() {
+            let deposit = 5000;
+            let credit = 500;
+            let creditdate = "14/11/2024";
+            let depositdate = "25/6/2024";
+            console.log(`deposite Date:${depositdate} and this diposite is ${deposit}
+credit date:${creditdate} and this credit is ${credit}`)
+        }
+    }
+    let AXIS = new Bank("axis bank", "Amreli", "25132951973", "Devang kalavadiya", "axis04868", "50,00,000");
+    AXIS.name();
+    AXIS.details();
+    AXIS.History();
+    AXIS.Balance();
+
+</script>
