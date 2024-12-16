@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        /* border: 1px solid red; */
+
+    }
+
+    body {
+        background-image:url('https://img.freepik.com/free-photo/movie-background-collage_23-2149876005.jpg?semt=ais_hybrid');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    h1 {
+        color: rgb(222, 70, 249);
+        justify-content: center;
+        display: flex;
+        margin-top: 20px;
+        font-size: 3rem;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        padding: 15px 5px;
+
+    }
+
+    .place {
+    width: 24%;
+    height: 33px;
+    border-radius: 7px;
+}
+
+input::placeholder{
+    color: rgba(0, 0, 0, 0.687);
+    padding:5.5rem;
+}
+
+    button {
+        margin-left: 5px;
+        border-radius: 5px;
+        padding:5px 15px; 
+        background-color: rgba(202, 9, 202, 0.872);
+
+    }
+
+    .image-container {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 50px;
+        
+    }
+    img{
+        padding:15px;
+        filter: drop-shadow(0 0 0.75rem rgb(207, 204, 204));
+        border-radius:30px;
+    }
+</style>
+
+<body>
+    <h1>Movie Search API </h1>
+    <form>
+        <input type="text" placeholder=" Search Movie Poster " class="place">
+        <button class="movie">FETCH</button>
+    </form>
+    <div class="image-container">
+
+    </div>
+
+</body>
+<script>
+    let form = document.querySelector('form ')
+    let container = document.querySelector('.image-container')
+
+    form.addEventListener('submit', (e) => {
+        event.preventDefault();
+        let select = form.querySelector('input').value;
+        console.log(select);
+
+        myAPI(select)
+
+    })
+
+    async function myAPI(select) {
+        let res = await fetch(`https://api.tvmaze.com/search/shows?q=${select}`);
+        let finalres = await res.json();
+
+        allimages(finalres);
+
+    }
+
+    function allimages(finalres) {
+        for (let movie of finalres) {
+            let src = movie.show.image.medium
+
+            let img = document.createElement('img')
+            img.src = src
+
+            container.appendChild(img)
+
+        }
+    }
+</script>
+
+</html>

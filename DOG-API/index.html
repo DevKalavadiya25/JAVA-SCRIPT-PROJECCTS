@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOG API</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    img{
+        /* width:%; */
+        height:auto;
+        margin-top:50px;
+        margin-left:80px;
+        display: flex;
+        margin: 0 auto;
+    }        
+
+    #selector{
+        margin-top:15px;
+        display: flex;
+        gap:15px;
+
+    }
+    button{
+        margin: 10px;
+        padding:5px 15px;
+        background-color:rgb(223, 152, 241);
+        float:right;
+    }
+    select{
+        width:200px;
+        color: rgb(6, 6, 6);
+        background-color: transparent;
+    }
+
+    label{
+        margin: 15px;
+    }
+   
+    nav{
+        background-color: #8d8888;
+        width:100%;
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <div id="selector">
+    <label for="Dog">Select Dogs Breed :</label>
+
+    <select id="dogs">
+        <option value="husky">Husky</option>
+        <option value="airedale">Airedale</option>
+        <option value="akita">Akita</option>
+        <option value="beagle">Beagle</option>
+        <option value="boxer">Boxer</option>
+        <option value="briard">Briard</option>
+        <option value="chow">Chow</option>
+        <option value="pug">Pug</option>
+        <option value="pomeranian">Pomeranian</option>
+        <option value="samoyed">Samoyed</option>
+
+    </select>
+
+    <button onclick="getDog()">New Dog</button>
+
+</div>
+</nav>
+
+        <div class="output"></div>
+
+    <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        id="image" alt="" width="45%">
+
+    <script>
+            const getDog = async ()=>{
+                
+              
+                
+                let Element = document.querySelector('#dogs');
+                let OutPut = Element.value;
+                
+                
+
+
+        try {
+
+              
+                
+
+            let res = await fetch(`https://dog.ceo/api/breed/${OutPut}/images/random`);
+            
+            let final = await res.json();
+
+            let  img = document.getElementById('image')
+
+            img.src = final.message
+
+
+
+        } catch (err) {
+            console.log(err);
+
+        }
+        
+
+    }
+
+
+    </script>
+
+
+</body>
+
+</html>
