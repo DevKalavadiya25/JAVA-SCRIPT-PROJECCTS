@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>my page</title>
 </head>
+
 <body>
-    
+    <div class="card">
+        <p> :Dev</p>
+        <p>Class : 12 </p>
+
+        <button onclick="addToCart('Dev',9)"> add to cart</button>
+
+    </div>
+
+    <div class="card">
+        <p>Name :Yash</p>
+        <p>Class :12 </p>
+
+        <button onclick="addToCart('Yash',1)"> add to cart</button>
+
+    </div>
+
+    <!-- ////////////// JAVA SCRIPT //////////// -->
+
+    <script>
+
+        let cart = [];
+
+        function addToCart(name, std) {
+
+            cart.push({ name, std })
+
+            localStorage.setItem('cart', JSON.stringify(cart))
+
+        }
+    </script>
 </body>
+
 </html>
