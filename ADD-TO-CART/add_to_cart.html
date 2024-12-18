@@ -10,12 +10,30 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Simple Add to Cart</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://img.freepik.com/premium-photo/two-colors-blue-pink-background_136346-1404.jpg?semt=ais_hybrid');
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0;
+      padding: 20px;
+      backdrop-filter: blur(35px);
+    }
+
     .product {
       border: 1px solid #ccc;
       padding: 15px;
       margin: 10px;
       width: 300px;
       text-align: center;
+      background-color:transparent;
+      box-shadow: 0px 2px 14px 5px rgb(100, 99, 99);
+
+    }
+      img{
+      transform: scale(1.03);
+      transition: transform 0.2s ease-in-out;
+
     }
 
     .cart-item {
@@ -72,7 +90,7 @@
       {
         img: 'https://m.media-amazon.com/images/I/71fNxYmT2gL._AC_UL480_FMwebp_QL65_.jpg',
         name: 'Park Avenue Luxury Perfume',
-        description: 'Park Avenue Luxury Perfume Gift Set for Men, 4x20 ml | Discoverer Perfume | Eau De Parfum | Premium Luxury Perfume for Corporate Man |'
+        description: 'Park Avenue Luxury Perfume Gift Set for Men, 4x20 ml | Discoverer Perfume | Premium Luxury Perfume for Corporate Man |'
       },
       {
         img: 'https://m.media-amazon.com/images/I/41fqcna8S5L._SX300_SY300_QL70_FMwebp_.jpg',
