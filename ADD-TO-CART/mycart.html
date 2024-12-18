@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show your cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .continer {
+        height: auto;
+        width: 100%;
+        /*border: 1px solid black;*/
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      
+      h1, h2 {
+        text-align: center;
+        color: #333;
+      }
+    
+      .product {
+        display: inline-block;
+        width: 300px;
+        margin: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+        height: 400px;
+      }
+    
+      .product:hover {
+        transform: scale(1.05);
+      }
+    
+      .product-image {
+        width: 80%;
+        height: 200px;
+        object-fit: cover;
+      }
+    
+      .product h2 {
+        font-size: 1.5em;
+        color: #555;
+      }
+    
+      .product p {
+        font-size: 1em;
+        color: #777;
+        padding: 0 10px;
+        margin-bottom: 20px;
+      }
+    
+      button {
+        background-color: rgb(0, 0, 0);
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+    
+      button:hover {
+       background-color: red;
+       color: white;
+      }
+    
+      hr {
+        margin: 40px 0;
+      }
+    
+      #cart {
+        list-style-type: none;
+        padding: 0;
+        font-size: 1.2em;
+      }
+    
+      #total {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      i{
+        font-size: 1.5rem;
+      }
+</style>
+
+<body>
+    <a href="./add_to_cart.html"><i class="fa-solid fa-arrow-left"></i></a>
+
+    <h1>SHOW A YOUR CART</h1>
+
+    <div class="continer">
+
+        <div id="cart-data">
+            
+        </div>
+    </div>
+
+
+    <script>
+        let recive = JSON.parse(localStorage.getItem('product'));
+
+        console.log(recive);
+
+        recive.forEach((val, index) => {
+
+            let body = document.getElementById('cart-data');
+
+            body.innerHTML += ` <div class="product">
+
+      <img
+        src="${val.img}"
+
+        alt="Product 2 Image" class="product-image">
+
+      <h2>${val.name}</h2>
+
+      <p>${val.description}</p>
+
+     <button onclick="removedata('${index}')">Delet Cart</button>
+
+    </div>`
+        });
+        function removedata(index) {
+
+            recive.splice(index, 1);
+
+            localStorage.setItem('product', JSON.stringify(recive))
+
+            window.location.reload()
+        }
+
+    </script>
+</body>
+
+</html>

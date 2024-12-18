@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Simple Add to Cart</title>
+  <style>
+    .product {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .cart-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+    }
+
+    .remove-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: darkred;
+    }
+
+    a i {
+      float: right;
+      font-size: 1.5rem;
+      position: fixed;
+      right: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="./mycart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+
+  <h1>ADD TO CART</h1>
+
+  <div class="continer">
+
+  </div>
+  <script>
+
+    let obj = [
+      {
+        img: 'https://m.media-amazon.com/images/I/71fNxYmT2gL._AC_UL480_FMwebp_QL65_.jpg',
+        name: 'Park Avenue Luxury Perfume',
+        description: 'Park Avenue Luxury Perfume Gift Set for Men, 4x20 ml | Discoverer Perfume | Eau De Parfum | Premium Luxury Perfume for Corporate Man |'
+      },
+      {
+        img: 'https://m.media-amazon.com/images/I/41fqcna8S5L._SX300_SY300_QL70_FMwebp_.jpg',
+        name: 'Wild Stone Ultra Sensual Long Lasting Perfume for Men',
+        description: 'Wild Stone Ultra Sensual Long Lasting Perfume for Men, 100ml'
+      },
+      {
+        img: 'https://m.media-amazon.com/images/I/71iYB3wKOYL._AC_UL480_FMwebp_QL65_.jpg',
+        name: 'Beardo Whisky Smoke Perfume for Men',
+        description: 'Beardo Whisky Smoke Perfume for Men, 100ml | Spicy, Woody - Oudh Scent Eau De Parfum '
+      },
+      {
+        img: 'https://m.media-amazon.com/images/I/61Mc9FBXiCL._AC_UL480_FMwebp_QL65_.jpg',
+        name: 'Wild Stone Edge Parfum for Men',
+        description: 'Wild Stone Edge Parfum for Men, Long Lasting Refreshing Every day Wear Fragrance  '
+      },
+      {
+        img: 'https://m.media-amazon.com/images/I/51NzKF7T1cL._AC_UL480_FMwebp_QL65_.jpg',
+        name: 'Villain Perfume For Men',
+        description: 'Villain Perfume For Men 100 Ml - Eau De Parfum - Premium Long Lasting Fragrance Spray - Woody & Spicy'
+      },
+      {
+        img: 'https://m.media-amazon.com/images/I/71F4iOotz2L._AC_UL480_FMwebp_QL65_.jpg',
+        name: 'Parfumori Guccy Flora Perfume',
+        description: 'Parfumori Guccy Flora Perfume | Long Lasting Fragrance | Inspired Luxury |'
+      },
+      {
+        img: 'https://m.media-amazon.com/images/I/61uisgZJ7mL._AC_UL480_FMwebp_QL65_.jpg',
+        name: 'Menjewell RARE-BLACK-OUD Perfume for Men',
+        description: 'Menjewell RARE-BLACK-OUD Perfume for Men,100ml'
+      },
+      {
+        img: 'https://m.media-amazon.com/images/I/51oqeXcVLOL._AC_UL480_FMwebp_QL65_.jpg',
+        name: 'Riya Rare Wood Premium',
+        description: 'Riya Rare Wood Premium Fragrance Liquid Eau De Perfume For Men, 100ml'
+      }
+    ]
+
+    obj.forEach((val) => {
+
+      let con = document.querySelector('.continer');
+
+      con.innerHTML += `
+    
+    <div class="product">
+
+      <img
+        src="${val.img}"
+        alt="Product 2 Image" class="product-image">
+
+      <h2>${val.name}</h2>
+
+      <p>${val.description}</p>
+
+     <button onclick="senddata('${val.img}','${val.name}','${val.description}')">Add to Cart</button>
+
+    </div>
+    `
+    });
+
+    let arr = [];
+
+    function senddata(img, name, description) {
+
+      arr.push({ img, name, description })
+
+      localStorage.setItem('product', JSON.stringify(arr));
+    }
+
+  </script>
+</body>
+
+</html>

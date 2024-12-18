@@ -43,7 +43,7 @@
             padding: 10px;
             border-radius: 8px;
             border: none;
-            box-shadow: 0px 2px 14px 1px rgb(244, 242, 242);
+            box-shadow: 0px 2px 18px 1px rgb(240, 149, 149);
             background-color: transparent;
             color: white;
             font-size: 1rem;
@@ -56,15 +56,17 @@
 
         .find {
             color: rgb(11, 9, 9);
-            padding: 10px 20px;
-            background-color: rgb(124, 187, 216);
+            width:70px;
+            height:40px;
+            background-color: rgb(132, 152, 159);
+            box-shadow: 0px 2px 18px 1px rgb(221, 217, 217);
             border-radius: 5px;
             border: none;
             cursor: pointer;
         }
 
         .find:hover {
-            background-color: rgb(83, 127, 147);
+            background-color: rgb(199, 174, 211);
             transition: all 0.5s;
         }
 
@@ -138,18 +140,21 @@
             }
         }
     </style>
+
 </head>
 
 <body>
     <h1>WEATHER-API</h1>
     <form id="myForm">
         <input type="text" placeholder="Search The City" class="place">
-        <button class="find">FETCH</button>
+        <button class="find"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="100%" fill="#000"><path d="M791.25-102.96 528.33-365.49q-29.43 23.42-68.79 36.82-39.36 13.41-84.64 13.41-112.78 0-191.09-78.37-78.32-78.37-78.32-189.7 0-111.34 78.37-189.71t190.04-78.37q111.67 0 189.7 78.37 78.04 78.37 78.04 189.81 0 44.36-13.06 83.18-13.06 38.82-37.84 71.4l263.77 262.62-63.26 63.07ZM374.36-403.41q75.08 0 127.11-52.53 52.02-52.54 52.02-127.39 0-74.86-52.08-127.39-52.08-52.54-127.05-52.54-75.52 0-128.12 52.54-52.6 52.53-52.6 127.39 0 74.85 52.54 127.39 52.55 52.53 128.18 52.53Z"/></svg></button>
     </form>
 
     <div class="my-container" style="display: none;">
 
     </div>
+
+    <!-- ////////////  LOGIC OF WEATHER API ///////////////////// -->
 
     <script>
 
@@ -165,16 +170,23 @@
         let api = '9a34130f777ed498b36997d75fe014a8';
 
         async function weather(select) {
+
             try {
+
                 let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${select}&appid=${api}&units=metric`);
+
                 let finalres = await res.json();
+
                 container.style.display='block'
+
                 container.innerHTML = `
+
                 <h2>Weather in ☁️ ${finalres.name}</h2>
                 <p>Temperature: 🌡️ ${finalres.main.temp}°C</p>
                 <p>Humidity: 💧 ${finalres.main.humidity}%</p>
                 <p>Weather: ⛅ ${finalres.weather[0].description}</p>
             `;
+
             } catch (err) {
                 console.log(err.message);
                 alert('City Not Found ‼️');
