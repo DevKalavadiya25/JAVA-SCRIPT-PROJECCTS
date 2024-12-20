@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Statistics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>COVID-19 </h1>
+
+        <form id="myForm">
+            <div class="input-field">
+                <label for="country" class="label-1">Country:</label>
+                <input type="text" placeholder="Search The State" class="place">
+            </div>
+            <button class="find" type="submit">Search</button>
+        </form>
+
+        <h1 class="heading"></h1>
+
+        <div class="stat">
+            <h2>Total Cases</h2>
+            <p id="total-cases">Loading...</p>
+        </div>
+
+        <div class="stat">
+            <h2>Total Deaths</h2>
+            <p id="total-deaths">Loading...</p>
+        </div>
+
+        <div class="stat">
+            <h2>Total Discharge</h2>
+            <p id="total-discharge">Loading...</p>
+        </div>
+    </div>
+
+    <script>
+        let submitBtn = document.querySelector('.find');
+
+
+        async function fetchCovidData(select) {
+            try {
+                let response = await fetch('https://api.rootnet.in/covid19-in/stats/latest');
+                let data = await response.json();
+                let stat = data.data.regional;
+
+                console.log(stat);
+
+
+
+                let totalCases = document.getElementById('total-cases');
+                let totalDeaths = document.getElementById('total-deaths');
+                let totalDischarge = document.getElementById('total-discharge');
+                let heading = document.querySelector('.heading');
+
+                let select = myForm.querySelector('.place').value;
+                // Add event listener for submit button
+                submitBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    fetchCovidData(select);
+
+
+                    stat.forEach((val) => {
+                        console.log(val)
+
+                        // Assuming we want the first region's data for demonstration
+                        if (val.loc.toLowerCase() == select.toLowerCase()) {
+
+
+                            totalCases.textContent = val.confirmedCasesIndian;
+                            totalDeaths.textContent = val.deaths;
+                            totalDischarge.textContent = val.discharged;
+                            heading.textContent = `${select}`;
+                        }
+
+                    });
+
+                });
+
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchCovidData('gujarat');
+    </script>
+</body>
+
+</html>
