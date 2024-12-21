@@ -52,9 +52,9 @@ p {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-    .heading {
-        margin-top: 20px;
-    }
+.heading {
+    margin-top: 20px;
+}
 
 .stat {
     flex: 1;
